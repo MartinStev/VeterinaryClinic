@@ -41,7 +41,20 @@
 ![Image](https://github.com/user-attachments/assets/14cefb69-8acd-4aa2-9126-d5314815a3e3)
 
 <p>The Pets tab provides a centralized overview of all pets registered in the system, displaying essential details for each animal. Users can view key information such as the pet’s Name, Age, and Owner</p>
+
+![Image](https://github.com/user-attachments/assets/8e96f70f-077b-46d2-b749-f4ac2e798cc4)
+
+![Image](https://github.com/user-attachments/assets/fe66b051-61b1-4be4-b623-07b10d14b459)
+
 <p>As an administrator, you have the ability to edit key pet details including name, age, and owner information. Additionally, you can add vaccines to a pet’s record, with the system automatically filtering to show only vaccines the pet has not yet received.</p>
 
 ![Image](https://github.com/user-attachments/assets/a21309f3-0a9d-45fc-bcd5-623c55996a76)
+
+<p>Administrators have the ability to delete pets through a confirmation process. When the delete button is clicked for a specific pet, a new window appears displaying all relevant information about the pet, including a final Delete button.</p>
+
+![Image](https://github.com/user-attachments/assets/21d5339b-8d93-4972-89c6-e2fb585debfe)
+
+<p>Administrators can access detailed pet information through a dedicated interface. When clicking the "Details" option, a new window opens to display comprehensive pet data, including list of administered vaccines.</p>
+
+![Image](https://github.com/user-attachments/assets/f8061ce6-6e27-4a11-b142-e18ccd018cb9)
 
