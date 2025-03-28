@@ -28,7 +28,7 @@
 
 ![Image](https://github.com/user-attachments/assets/f56469ac-b655-4cd7-868a-6a4a8f4f7c43)
 
-![Image](https://github.com/user-attachments/assets/91bfd94f-3d39-4919-bbe8-8d53fdce72d3)\
+![Image](https://github.com/user-attachments/assets/91bfd94f-3d39-4919-bbe8-8d53fdce72d3)
 
 <h2><b>Admin's View</b></h2>
 
@@ -60,7 +60,7 @@
 
 ![Image](https://github.com/user-attachments/assets/14cefb69-8acd-4aa2-9126-d5314815a3e3)
 
-<p>The Pets tab provides a centralized overview of all pets registered in the system, displaying essential details for each animal. Users can view key information such as the pet’s Name, Age, and Owner</p>
+<p>The <b>Pets</b> tab provides a centralized overview of all pets registered in the system, displaying essential details for each animal. Users can view key information such as the pet’s Name, Age, and Owner</p>
 
 ![Image](https://github.com/user-attachments/assets/8e96f70f-077b-46d2-b749-f4ac2e798cc4)
 
@@ -74,11 +74,11 @@
 
 ![Image](https://github.com/user-attachments/assets/21d5339b-8d93-4972-89c6-e2fb585debfe)
 
-<p>Administrators can access detailed pet information through a dedicated interface. When clicking the "Details" option, a new window opens to display comprehensive pet data, including list of administered vaccines.</p>
+<p>Administrators can access detailed pet information through a dedicated interface. When clicking the <b>Details</b> option, a new window opens to display comprehensive pet data, including list of administered vaccines.</p>
 
 ![Image](https://github.com/user-attachments/assets/f8061ce6-6e27-4a11-b142-e18ccd018cb9)
 
-<p>Administrators possess the capability to create new client profiles, requiring mandatory entry of valid:</p>
+<p>Administrators possess the capability to create new client profiles in the <b>Create Owner</b> tab, requiring mandatory entry of valid:</p>
 <ul>
   <li>Name.</li>
   <li>Surname.</li>
@@ -87,11 +87,11 @@
 
 ![Image](https://github.com/user-attachments/assets/15056241-a055-4099-a3d4-096a8e0be107)
 
-<p>Administrators can create new vaccines by entering a unique name for the vaccine.</p>
+<p>Administrators can create new vaccines by entering a unique name for the vaccine in the <b>Create Vaccine</b> tab.</p>
 
 ![Image](https://github.com/user-attachments/assets/c93a6436-33c8-45e5-b459-220711b7bc36)
 
-<p>Administrators can create new pets by providing the following details:</p>
+<p>Administrators can create new pets in the <b>Create Pet</b> tab by providing the following details:</p>
 <ul>
   <li>Name.</li>
   <li>Age in range between 1 and 50.</li>
