@@ -11,5 +11,7 @@ namespace PetTracking.Repositories
         Task AddVaccineAsync(Vaccine vaccine);
         Task DeleteVaccineAsync(Vaccine vaccine);
         Task UpdateVaccineAsync(Vaccine vaccine);
+        Task GetVaccineByNameAsync(Vaccine vaccine);
+        Task<Vaccine> GetVaccineByNameAsync(string name);
     }
 }

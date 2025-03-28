@@ -15,7 +15,7 @@ namespace PetTracking.Repositories
         public async Task AddVaccineAsync(Vaccine vaccine)
         {
             //await _context.Vaccines.AddAsync(vaccine);
-             _context.Vaccines.Add(vaccine);
+            _context.Vaccines.Add(vaccine);
             await _context.SaveChangesAsync();
         }
 
@@ -47,6 +47,17 @@ namespace PetTracking.Repositories
         {
             _context.Vaccines.Update(vaccine);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<Vaccine?> GetVaccineByNameAsync(string name)
+        {
+            return await _context.Vaccines
+                .FirstOrDefaultAsync(v => v.Name == name);
+        }
+
+        public Task GetVaccineByNameAsync(Vaccine vaccine)
+        {
+            throw new NotImplementedException();
         }
     }
 }

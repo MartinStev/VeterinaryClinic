@@ -1,39 +1,71 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    /margin-bottom: 60px;
+    /
 }
 
-/* Force login partial nav-links to be white */
-.navbar-nav .nav-link {
-    color: #ffffff !important;
-}
-/* Optionally, style the logout button */
-.navbar-nav form .btn-link {
-    color: #ffffff !important;
-}
 
-/* Custom styling for the active navigation link */
-.navbar-nav .nav-link.active {
+
+
+/* Force login partial nav-links to be white /
+/.navbar-nav .nav-link {
+    color: #ffffff !important;
+}/
+/ Optionally, style the logout button /
+/.navbar-nav form .btn-link {
+    color: #ffffff !important;
+}*/
+
+/* Custom styling for the active navigation link /
+/.navbar-nav .nav-link.active {
     background-color: #0d6efd; /* Bootstrap primary color */
-    color: #fff !important;
+/*color: #fff !important;
     border-radius: 0.25rem;
     padding: 0.5rem 1rem;
+} */
+
+
+/* Style for nav-menu links /
+.navbar-nav .nav-link {
+    font-size: 1.3em;
+    color: white; / Default color for the links /
+    transition: color 0.3s ease, background-color 0.3s ease; / Smooth transition effect */
+}
+
+.list-unstyled {
+    font-size: 1.3em;
+}
+
+.navbar-nav .nav-link:active, .navbar-nav .nav-link.active {
+    color: gold; /* Color for active or clicked link /
+        background-color: transparent; / Ensure no background color is applied */
+}
+
+/* Dropdown menu link styling /
+.dropdown-menu .dropdown-item {
+    color: black; / Default color for dropdown items /
+    transition: color 0.3s ease, background-color 0.3s ease; / Smooth transition effect */
+}
+
+.dropdown-menu .dropdown-item:active, .dropdown-menu .dropdown-item.active {
+    color: gold; /* Color for active or clicked dropdown items /
+        background-color: transparent; / Ensure no background color is applied */
 }
