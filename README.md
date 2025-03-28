@@ -24,7 +24,7 @@
 
 ![Image](https://github.com/user-attachments/assets/b1a0e967-92ad-44a7-8f3a-3753dd110c9f)
 
-<p>Users can view all pets in the system from the <b>Pets</b> tab, with each pet displaying a Details button that reveals additional information, including the pet’s owner and a list of vaccinations the pet has received.</p>
+<p>Users can also view all pets in the system from the <b>Pets</b> tab, with each pet displaying a <b>Details</b> button that reveals additional information, including the pet’s owner and a list of vaccinations the pet has received.</p>
 
 ![Image](https://github.com/user-attachments/assets/f56469ac-b655-4cd7-868a-6a4a8f4f7c43)
 
@@ -82,7 +82,7 @@
 <ul>
   <li>Name.</li>
   <li>Surname.</li>
-  <li>Age.</li>
+  <li>Age in range between 18 and 100.</li>
 </ul>
 
 ![Image](https://github.com/user-attachments/assets/15056241-a055-4099-a3d4-096a8e0be107)
@@ -94,9 +94,9 @@
 <p>Administrators can create new pets in the <b>Create Pet</b> tab by providing the following details:</p>
 <ul>
   <li>Name.</li>
-  <li>Age in range between 1 and 50.</li>
+  <li>Age in range between 0 and 50.</li>
   <li>Choose the pet’s owner from a dropdown list of existing owners in the system.</li>
-  <li>Select applicable vaccines from a dropdown list</li>
+  <li>Select applicable vaccines from a dropdown list.</li>
 </ul>
 
 ![Image](https://github.com/user-attachments/assets/86328aea-60ab-4b43-8d18-45f747d5cae1)
