@@ -22,34 +22,6 @@ body {
     /
 }
 
-
-
-
-/* Force login partial nav-links to be white /
-/.navbar-nav .nav-link {
-    color: #ffffff !important;
-}/
-/ Optionally, style the logout button /
-/.navbar-nav form .btn-link {
-    color: #ffffff !important;
-}*/
-
-/* Custom styling for the active navigation link /
-/.navbar-nav .nav-link.active {
-    background-color: #0d6efd; /* Bootstrap primary color */
-/*color: #fff !important;
-    border-radius: 0.25rem;
-    padding: 0.5rem 1rem;
-} */
-
-
-/* Style for nav-menu links /
-.navbar-nav .nav-link {
-    font-size: 1.3em;
-    color: white; / Default color for the links /
-    transition: color 0.3s ease, background-color 0.3s ease; / Smooth transition effect */
-}
-
 .list-unstyled {
     font-size: 1.3em;
 }
@@ -69,3 +41,155 @@ body {
     color: gold; /* Color for active or clicked dropdown items /
         background-color: transparent; / Ensure no background color is applied */
 }
+
+body {
+    font-family: 'Trebuchet MS', Verdana, sans-serif;
+    background-color: #f5f5f5;
+}
+
+h2, h3 {
+    color: #034af3;
+}
+
+.about-container {
+    max-width: 1200px;
+}
+
+.about-content {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.about-section {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.about-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.about-list li {
+    margin-bottom: 10px;
+}
+
+.about-list li::before {
+    content: "\2022";
+    color: #034af3;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+/*Contact form*/
+.appointment-container {
+    max-width: 1200px;
+}
+
+.appointment-form {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.appointment-title {
+    color: #034af3;
+}
+
+.appointment-form-group {
+    margin-bottom: 15px;
+}
+
+.appointment-label {
+    font-weight: bold;
+    color: #333;
+}
+
+.appointment-input {
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.appointment-send, .appointment-cancel {
+    margin: 5px;
+}
+
+.appointment-image {
+    padding: 20px;
+}
+
+    .appointment-image img {
+        border-radius: 10px;
+    }
+
+/*
+    Location
+*/
+.location-container {
+    max-width: 1200px;
+}
+
+.contact-info {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.map-section iframe {
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Style for nav-menu links */
+.navbar-nav .nav-link {
+    font-size: 1.5em; /* Increase font size for larger links */
+    color: white; /* Default color for the links */
+    transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transition effect */
+}
+
+/* Style for active or clicked navigation link */
+.navbar-nav .nav-link.active {
+    color: orange !important; /* Change active link color to orange */
+    background-color: transparent; /* Ensure no background color is applied */
+    font-weight: bold; /* Optional: Make active link bold */
+}
+
+.navbar-nav .nav-link:hover {
+    color: lightgray; /* Change link color on hover */
+}
+
+
+
+/* Hover effect for footer links */
+footer .list-unstyled li a.footer-link:hover,
+footer .footer-link:hover {
+    color: orange !important; /* Change link color to orange on hover */
+}
+
+footer {
+    padding-top: 2rem; /* Reduce top padding */
+    padding-bottom: 1rem; /* Reduce bottom padding */
+}
+
+    footer .row {
+        margin-bottom: 0; /* Remove bottom margin */
+    }
+
+    footer .list-unstyled {
+        margin-bottom: 0; /* Remove bottom margin */
+    }
+
+    footer .text-center {
+        margin-top: 0; /* Remove top margin */
+    }
+
+
+
+

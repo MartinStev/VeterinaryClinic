@@ -17,7 +17,18 @@ namespace PetTracking.Controllers
         {
             return View();
         }
-
+        public IActionResult AboutUs()
+        {
+            return View();
+        }
+        public IActionResult ContactForm()
+        {
+            return View();
+        }
+        public IActionResult Location()
+        {
+            return View();  
+        }
         public IActionResult Privacy()
         {
             return View();

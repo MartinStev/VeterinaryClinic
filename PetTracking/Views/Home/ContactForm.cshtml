@@ -1,0 +1,52 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@{
+    ViewBag.Title = "Schedule an Appointment";
+}
+
+<div class="container mt-5 appointment-container">
+    <div class="row">
+        <div class="col-md-6 appointment-form">
+            <h2 class="mb-3 appointment-title">Schedule an Appointment</h2>
+            <form id="appointmentForm">
+                <div class="form-group mb-3 appointment-form-group">
+                    <label for="ownerName" class="appointment-label">Pet Owner's Name:</label>
+                    <input type="text" class="form-control appointment-input" id="ownerName" name="ownerName" required>
+                </div>
+                <div class="form-group mb-3 appointment-form-group">
+                    <label for="petType" class="appointment-label">Type of Pet:</label>
+                    <input type="text" class="form-control appointment-input" id="petType" name="petType" required>
+                </div>
+                <div class="form-group mb-3 appointment-form-group">
+                    <label for="problemDescription" class="appointment-label">Problem Description:</label>
+                    <textarea class="form-control appointment-input" id="problemDescription" name="problemDescription" rows="3" required></textarea>
+                </div>
+                <div class="form-group mb-3 appointment-form-group">
+                    <label for="phoneNumber" class="appointment-label">Phone Number:</label>
+                    <input type="tel" class="form-control appointment-input" id="phoneNumber" name="phoneNumber" required>
+                </div>
+                <div class="form-group mb-3 appointment-form-group">
+                    <label for="email" class="appointment-label">Email:</label>
+                    <input type="email" class="form-control appointment-input" id="email" name="email" required>
+                </div>
+                <div class="form-group mb-3 appointment-form-group">
+                    <label for="scheduleDate" class="appointment-label">Schedule Date:</label>
+                    <input type="date" class="form-control appointment-input" id="scheduleDate" name="scheduleDate" required>
+                </div>
+                <div class="form-group mb-3 appointment-form-group">
+                    <label for="scheduleTime" class="appointment-label">Schedule Time:</label>
+                    <input type="time" class="form-control appointment-input" id="scheduleTime" name="scheduleTime" required>
+                </div>
+                <button type="submit" class="btn btn-primary appointment-send">Send</button>
+                <a href="@Url.Action("Index", "Home")" class="btn btn-secondary appointment-cancel">Cancel</a>
+            </form>
+        </div>
+        <div class="col-md-6 appointment-image">
+            <img src="~/Content/clinic-image.jpg" alt="Clinic Image" class="img-fluid">
+        </div>
+    </div>
+</div>
+
