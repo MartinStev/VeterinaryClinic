@@ -12,19 +12,19 @@
 
 <h2><b>User's View</b></h2>
 
-<p>When logged into the system, users accessing the Owners tab can view a comprehensive list of all active clients in the system. For each client, they have the option to click the Details button, which opens a dedicated page displaying detailed information about the client, including their personal profile and associated pets.</p>
+<p>When logged into the system, users accessing the <b>Owners</b> tab can view a comprehensive list of all active clients in the system. For each client, they have the option to click the <b>Details</b> button, which opens a dedicated page displaying detailed information about the client, including their personal profile and associated pets.</p>
 
 ![Image](https://github.com/user-attachments/assets/69643f15-adad-45a3-b943-d41aca851180)
 
 ![Image](https://github.com/user-attachments/assets/39dea090-fc67-442d-87fa-124c58e7e3ac)
 
-<p>Users can view all vaccines and the pets that received them by clicking the Details button.</p>
+<p>Users can view all vaccines from the <b>Vaccines</b> tab and the pets that received them by clicking the <b>Details</b> button.</p>
 
 ![Image](https://github.com/user-attachments/assets/414e82f4-967e-4c51-8469-1cd784463e66)
 
 ![Image](https://github.com/user-attachments/assets/b1a0e967-92ad-44a7-8f3a-3753dd110c9f)
 
-<p>Users can view all pets in the system, with each pet displaying a Details button that reveals additional information, including the pet’s owner and a list of vaccinations the pet has received.</p>
+<p>Users can view all pets in the system from the <b>Pets</b> tab, with each pet displaying a Details button that reveals additional information, including the pet’s owner and a list of vaccinations the pet has received.</p>
 
 ![Image](https://github.com/user-attachments/assets/f56469ac-b655-4cd7-868a-6a4a8f4f7c43)
 
@@ -32,21 +32,21 @@
 
 <h2><b>Admin's View</b></h2>
 
-<p>When an admin logs into the system, they are transferred to the Owners tab, which serves as a central hub for managing client information. </p> 
+<p>When an admin logs into the system, they are transferred to the <b>Owners</b> tab, which serves as a central hub for managing client information. </p> 
 
 <p>This tab displays a table with essential details about each client, including their Name, Surname, and Age. Admins have the option to edit client information as needed, delete clients from the system if required, and view detailed profiles for each client, allowing for efficient management of client data and a deeper understanding of their interactions with the clinic.</p>
 
 ![Image](https://github.com/user-attachments/assets/00f6641e-cf05-4e5b-904d-ee3564c8e907)
 
-<p>As mentioned, administrators have the capability to edit client information. This feature allows them to update details such as a client's Name, Surname, and Age as needed, ensuring that the data remains accurate and up-to-date.</p>
+<p>As mentioned, administrators have the capability to edit client information by clicking the <b>Edit</b> button. This feature allows them to update details such as a client's Name, Surname, and Age as needed, ensuring that the data remains accurate and up-to-date.</p>
 
 ![Image](https://github.com/user-attachments/assets/4d5825b3-4078-4f98-8a7b-db16085c82ad)
 
-<p>The administrator has the ability to delete clients from the system. When the delete button is clicked, a confirmation window appears, prompting the administrator to confirm the deletion of the specific client. This ensures that accidental deletions are prevented and allows the administrator to review the action before proceeding.</p>
+<p>The administrator has the ability to delete clients from the system. When the <b>Delete</b> button is clicked, a confirmation window appears, prompting the administrator to confirm the deletion of the specific client. This ensures that accidental deletions are prevented and allows the administrator to review the action before proceeding.</p>
 
 ![Image](https://github.com/user-attachments/assets/1ef6ecb7-75fa-426c-9101-1fb1dc60ede0)
 
-<p>By clicking the Details button, the administrator can view comprehensive information about the client, including their personal details as well as information about their pets. This allows the administrator to manage client records efficiently and access all relevant data in one place.</p>
+<p>By clicking the <b>Details</b> button, the administrator can view comprehensive information about the client, including their personal details as well as information about their pets. This allows the administrator to manage client records efficiently and access all relevant data in one place.</p>
 
 ![Image](https://github.com/user-attachments/assets/f6686eb5-e3a1-4552-9900-e44b00189a01)
 
