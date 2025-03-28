@@ -27,15 +27,16 @@ namespace PetTracking.Controllers
 
             if (!_memoryCache.TryGetValue(cacheKey, out List<GetVaccineDTO> vaccineGet))
             {
-                // Cache miss: fetch from DB
                 var vaccines = await _vaccineRepository.GetAllVaccinesAsync();
-                vaccineGet = _mapper.Map<List<GetVaccineDTO>>(vaccines);
 
-                // Cache the data with absolute and sliding expiration
+                var activeVaccines = vaccines.Where(v => !v.IsDeleted).ToList();
+
+                vaccineGet = _mapper.Map<List<GetVaccineDTO>>(activeVaccines);
+
                 var cacheOptions = new MemoryCacheEntryOptions
                 {
-                    AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5), // Data expires after 5 minutes
-                    SlidingExpiration = TimeSpan.FromMinutes(1) // Refreshes expiration if accessed within 1 minutes
+                    AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5),
+                    SlidingExpiration = TimeSpan.FromMinutes(1) 
                 };
 
                 _memoryCache.Set(cacheKey, vaccineGet, cacheOptions);
@@ -48,7 +49,7 @@ namespace PetTracking.Controllers
         public async Task<IActionResult> Details(int id)
         {
             var vaccineWithPets = await _vaccineRepository.GetVaccineWithPetsAsync(id);
-            if(vaccineWithPets == null)
+            if (vaccineWithPets == null)
             {
                 return NotFound();
             }
@@ -62,14 +63,52 @@ namespace PetTracking.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateVaccineDTO createVaccine)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
+                var existingVaccine = await _vaccineRepository.GetVaccineByNameAsync(createVaccine.Name);
+
+                if (existingVaccine != null && existingVaccine.IsDeleted)
+                {
+                    existingVaccine.IsDeleted = false;
+                    await _vaccineRepository.UpdateVaccineAsync(existingVaccine);
+
+                    _memoryCache.Remove("vaccines_list");
+
+                    return RedirectToAction("GetAllVaccines");
+                }
+
                 var domainVaccine = _mapper.Map<Vaccine>(createVaccine);
-                await _vaccineRepository.AddVaccineAsync(domainVaccine);
 
-                _memoryCache.Remove("vaccines_list"); 
+                try
+                {
+                    if (existingVaccine != null)
+                    {
+                        if (existingVaccine.Name != domainVaccine.Name)
+                        {
+                            await _vaccineRepository.AddVaccineAsync(domainVaccine);
 
-                return RedirectToAction("GetAllVaccines");
+                            _memoryCache.Remove("vaccines_list");
+                            return RedirectToAction("GetAllVaccines");
+                        }
+                        else
+                            throw new Exception($"Vaccine {createVaccine.Name} already exists!");
+                    }
+                    else
+                    {
+                        await _vaccineRepository.AddVaccineAsync(domainVaccine);
+
+                        _memoryCache.Remove("vaccines_list");
+                        return RedirectToAction("GetAllVaccines");
+                    }
+
+                }
+                catch (Exception ex)
+                {
+
+                    ModelState.AddModelError("", ex.Message);
+                    return View(createVaccine);
+                }
+
             }
             return View(createVaccine);
         }
@@ -88,14 +127,30 @@ namespace PetTracking.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(EditVaccineDTO editVaccine)
         {
+            var existingVaccine = await _vaccineRepository.GetVaccineByNameAsync(editVaccine.Name);
+
             if (ModelState.IsValid)
             {
-                var vaccine = _mapper.Map<Vaccine>(editVaccine);
-                await _vaccineRepository.UpdateVaccineAsync(vaccine);
+                try
+                {
+                    if (existingVaccine == null)
+                    {
+                        var vaccine = _mapper.Map<Vaccine>(editVaccine);
+                        await _vaccineRepository.UpdateVaccineAsync(vaccine);
 
-                _memoryCache.Remove("vaccines_list"); 
+                        _memoryCache.Remove("vaccines_list");
 
-                return RedirectToAction("GetAllVaccines");
+                        return RedirectToAction("GetAllVaccines");
+                    }
+                    else
+                        throw new Exception($"Vaccine {editVaccine.Name} already exists. Vaccines in the system cannot have identical names!");
+                }
+                catch (Exception ex)
+                {
+
+                    ModelState.AddModelError("", ex.Message);
+                    return View(editVaccine);
+                }
             }
             return View(editVaccine);
         }
@@ -104,17 +159,17 @@ namespace PetTracking.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             var vaccine = await _vaccineRepository.GetVaccineByIdAsync(id);
-            if(vaccine == null)
+            if (vaccine == null)
             {
                 return NotFound();
             }
 
-            await _vaccineRepository.DeleteVaccineAsync(vaccine);
+            vaccine.IsDeleted = true;
+            await _vaccineRepository.UpdateVaccineAsync(vaccine);
 
-            _memoryCache.Remove("vaccines_list"); 
+            _memoryCache.Remove("vaccines_list");
 
             return RedirectToAction("GetAllVaccines");
         }
-     
     }
 }

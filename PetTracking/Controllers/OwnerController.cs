@@ -32,19 +32,15 @@ namespace PetTracking.Controllers
         {
             const string cacheKey = "AllOwnersCacheKey";
 
-            // Try to get the cached data
             if (!_memoryCache.TryGetValue(cacheKey, out List<GetOwnerDTO> ownersGet))
             {
-                // If not in cache, fetch data from the database
                 var owners = await _ownerRepository.GetAllOwnersAsync();
                 ownersGet = _mapper.Map<List<GetOwnerDTO>>(owners);
 
-                // Set cache options
                 var cacheOptions = new MemoryCacheEntryOptions()
-                    .SetAbsoluteExpiration(TimeSpan.FromMinutes(5)) // Absolute expiration after 5 minutes
-                    .SetSlidingExpiration(TimeSpan.FromMinutes(1));  // Sliding expiration after 1 minutes of inactivity
+                    .SetAbsoluteExpiration(TimeSpan.FromMinutes(5))
+                    .SetSlidingExpiration(TimeSpan.FromMinutes(1)); 
 
-                // Cache the data
                 _memoryCache.Set(cacheKey, ownersGet, cacheOptions);
             }
             
@@ -57,7 +53,6 @@ namespace PetTracking.Controllers
             return View(ownerWithPets);
         }
 
-        //[Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -71,7 +66,6 @@ namespace PetTracking.Controllers
 
                 await _ownerRepository.AddOwnerAsync(domainOwner);
 
-                // Remove the cache
                 _memoryCache.Remove("AllOwnersCacheKey");
 
                 return RedirectToAction("GetAllOwners");
@@ -99,7 +93,6 @@ namespace PetTracking.Controllers
                 var owner = _mapper.Map<Owner>(editOwner);
                 await _ownerRepository.UpdateOwnerAsync(owner);
 
-                // Remove the cache
                 _memoryCache.Remove("AllOwnersCacheKey");
 
                 return RedirectToAction("GetAllOwners");
@@ -118,14 +111,11 @@ namespace PetTracking.Controllers
 
             await _ownerRepository.DeleteOwnerAsync(owner);
 
-            // Remove the cache
             _memoryCache.Remove("AllOwnersCacheKey");
 
-            // Remove the cache for Pets
             _memoryCache.Remove("AllPetsCacheKey");
 
             return RedirectToAction("GetAllOwners");
         }
-
     }
 }

@@ -35,35 +35,27 @@ namespace PetTracking.Controllers
         {
             const string cacheKey = "AllPetsCacheKey";
 
-            // Try to get the cached data
             if (!_memoryCache.TryGetValue(cacheKey, out List<GetPetDTO> petsGet))
             {
-                // If not in cache, fetch data from the database
                 var pets = await _petRepository.GetAllPetsWithOwnersAsync();
                 petsGet = _mapper.Map<List<GetPetDTO>>(pets);
-             
-                // Set cache options
+     
                 var cacheOptions = new MemoryCacheEntryOptions()
-                    .SetAbsoluteExpiration(TimeSpan.FromMinutes(5)) // Absolute expiration after 5 minutes
-                    .SetSlidingExpiration(TimeSpan.FromMinutes(1));  // Sliding expiration after 1 minutes of inactivity
+                    .SetAbsoluteExpiration(TimeSpan.FromMinutes(5)) 
+                    .SetSlidingExpiration(TimeSpan.FromMinutes(1));
 
-                // Cache the data
                 _memoryCache.Set(cacheKey, petsGet, cacheOptions);
             }
 
-            // Calculate the total number of pets
             int totalPets = petsGet.Count;
 
-            // Calculate the number of pages
             int totalPages = (int)Math.Ceiling((double)totalPets / pageSize);
 
-            // Get the pets for the current page
             var pagedPets = petsGet
             .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .ToList();
 
-            // Pass the paged data and pagination information to the view
             ViewBag.CurrentPage = page;
             ViewBag.TotalPages = totalPages;
             ViewBag.PageSize = pageSize;
@@ -79,7 +71,7 @@ namespace PetTracking.Controllers
                 return NotFound();
             }
 
-            ViewBag.CurrentPage = page; // Pass the current page to the view
+            ViewBag.CurrentPage = page; 
             return View(petInfo);
         }
 
@@ -101,7 +93,6 @@ namespace PetTracking.Controllers
             {
                 var domainPet = _mapper.Map<Pet>(createPet);
 
-                // If any vaccine IDs were selected, create the join entities.
                 if (createPet.VaccineIds != null && createPet.VaccineIds.Any())
                 {
                     domainPet.PetVaccines = createPet.VaccineIds
@@ -111,7 +102,6 @@ namespace PetTracking.Controllers
 
                 await _petRepository.AddPetAsync(domainPet);
 
-                // Handle image upload
                 if (createPet.PetImage != null && createPet.PetImage.Length > 0)
                 {
                     var imagePath = Path.Combine("wwwroot/images", $"{domainPet.PetId}_.jpg");
@@ -121,7 +111,6 @@ namespace PetTracking.Controllers
                     }
                 }
 
-                // Remove the cache
                 _memoryCache.Remove("AllPetsCacheKey");
 
                 return RedirectToAction("GetAllPets");
@@ -130,10 +119,9 @@ namespace PetTracking.Controllers
             var owners = await _ownerRepository.GetAllOwnersAsync();
             var vaccines = await _vaccineRepository.GetAllVaccinesAsync();
 
-            // Reload dropdown lists for the view
             ViewBag.Owners = new SelectList(owners, "OwnerId", "Name");
             ViewBag.Vaccines = new MultiSelectList(vaccines, "VaccineId", "Name");
-            ViewBag.HasVaccines = hasVaccines; // Pass the hasVaccines value back to the view          
+            ViewBag.HasVaccines = hasVaccines;          
 
             return View(createPet);
         }
@@ -146,7 +134,7 @@ namespace PetTracking.Controllers
             {
                 return NotFound();
             }
-            ViewBag.CurrentPage = page; // Pass the current page to the view
+            ViewBag.CurrentPage = page; 
             return View(petToDelete);
         }
         [HttpPost]
@@ -155,10 +143,8 @@ namespace PetTracking.Controllers
             var petToDelete = await _petRepository.GetAllInfoForPetAsync(id);
             _petRepository.DeletePetAsync(petToDelete);
 
-            // Remove the cache
             _memoryCache.Remove("AllPetsCacheKey");
 
-            // Redirect back to the same page
             return RedirectToAction("GetAllPets", new { page = page });
         }
 
@@ -174,12 +160,11 @@ namespace PetTracking.Controllers
             var owners = await _ownerRepository.GetAllOwnersAsync();
             var allVaccines = await _vaccineRepository.GetAllVaccinesAsync();
 
-            // Filter out already selected vaccines (so they won't show up in the dropdown)
             var availableVaccines = allVaccines.Where(v => !domainPet.PetVaccines.Any(pv => pv.VaccineId == v.VaccineId)).ToList();
 
             ViewBag.Owners = new SelectList(owners, "OwnerId", "Name");
             ViewBag.Vaccines = new MultiSelectList(availableVaccines, "VaccineId", "Name");
-            ViewBag.CurrentPage = page; // Pass the current page to the view
+            ViewBag.CurrentPage = page; 
 
             return View(petToEdit);
         }
@@ -201,7 +186,6 @@ namespace PetTracking.Controllers
                 pet.Age = dto.Age;
                 pet.OwnerId = dto.OwnerId;
 
-                // Add selected Vaccines as PetVaccine objects
                 foreach (var vaccineId in dto.VaccineIds)
                 {
                     pet.PetVaccines.Add(new PetVaccine
@@ -213,14 +197,11 @@ namespace PetTracking.Controllers
 
                 await _petRepository.UpdatePetAsync(pet);
 
-                // Remove the cache
                 _memoryCache.Remove("AllPetsCacheKey");
 
-                // Redirect back to the same page
                 return RedirectToAction("GetAllPets", new { page = page });
             }
 
-            // Reload dropdowns if ModelState is invalid
             var owners = await _ownerRepository.GetAllOwnersAsync();
             var vaccines = await _vaccineRepository.GetAllVaccinesAsync();
 
