@@ -1,0 +1,50 @@
+﻿@model PetTracking.DTOs.CreateOwnerDTO
+
+@{
+    ViewData["Title"] = "Create Owner";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">📝 Create New Owner</h2>
+
+    <form asp-action="Create" method="post" class="shadow-lg rounded p-4 bg-light">
+
+        <!-- Validation Summary -->
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+        <!-- Name Field -->
+        <div class="form-group mb-3">
+            <label asp-for="Name" class="form-label"></label>
+            <input asp-for="Name" class="form-control" placeholder="Enter name" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <!-- Surname Field -->
+        <div class="form-group mb-3">
+            <label asp-for="Surname" class="form-label"></label>
+            <input asp-for="Surname" class="form-control" placeholder="Enter surname" />
+            <span asp-validation-for="Surname" class="text-danger"></span>
+        </div>
+
+        <!-- Age Field -->
+        <div class="form-group mb-4">
+            <label asp-for="Age" class="form-label"></label>
+            <input asp-for="Age" class="form-control" placeholder="Enter age" type="number" />
+            <span asp-validation-for="Age" class="text-danger"></span>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group text-center">
+            <input type="submit" value="Create Owner" class="btn btn-success btn-lg" />
+        </div>
+
+    </form>
+
+    <!-- Back Button -->
+    <div class="mt-4 text-center">
+        <a asp-action="GetAllOwners" class="btn btn-secondary btn-lg">
+            <i class="bi bi-arrow-left"></i> Back to Owners
+        </a>
+    </div>
+</div>

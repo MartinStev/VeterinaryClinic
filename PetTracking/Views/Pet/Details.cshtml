@@ -1,0 +1,64 @@
+﻿@model PetTracking.Models.Pet
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pet Details - @Model.Name</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-MegaXQv+Phszj6L5AQ9s1rZdIWnqvEtZxFNE7mZ6sUO82lC5pW/n7MZB0J6kLB4V" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Pet Details</h1>
+
+        <!-- Pet Details Card -->
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h2>@Model.Name</h2>
+            </div>
+            <div class="card-body">
+                <p class="mb-2"><strong>Age:</strong> @Model.Age</p>
+                <p class="mb-0"><strong>Owner:</strong> @Model.Owner.GetFullName()</p>
+            </div>
+        </div>
+
+        <!-- Vaccines Section -->
+        <div class="mb-4">
+            <h3>Vaccines</h3>
+            @if (Model.PetVaccines != null && Model.PetVaccines.Any())
+            {
+                <ul class="list-group">
+                    @foreach (var petVaccine in Model.PetVaccines)
+                    {
+                        <li class="list-group-item">
+                            @petVaccine.Vaccine.Name
+                        </li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <div class="alert alert-info" role="alert">
+                    No vaccines recorded for this pet.
+                </div>
+            }
+        </div>
+
+        <div class="mt-4">
+            <a asp-action="GetAllPets" asp-route-page="@ViewBag.CurrentPage" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i> Back to List
+            </a>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdV7qcx0tQ2zjA0K8eA8pe5oZI97jhTEJtT7bZXv3pAmAnT9Zw6aYmytz5ouQf"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-LtrjvnR4/Jqs+IvfCmK7KtUJ6jStswYGw1pt5UPIRrTJ8LSEY8FBU6I4f6bFX3do"
+            crossorigin="anonymous"></script>
+</body>
+</html>

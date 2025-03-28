@@ -1,0 +1,66 @@
+﻿@model IEnumerable<PetTracking.DTOs.GetPetDTO>
+
+@{
+    ViewData["Title"] = "All Pets";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center mb-4">All Pets</h1>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var pet in Model)
+        {
+            <div class="col">
+                <div class="card shadow-sm rounded">
+
+                    <img src="~/images/@(pet.PetId)_.jpg" class="card-img-top p-3" alt="@pet.Name" style="border-radius: 15px; height: 200px; object-fit: cover;">
+
+                    <div class="card-body text-center">
+                        <h5 class="card-title">@pet.Name</h5>
+                        <p class="card-text text-muted">Age: @pet.Age</p>
+                        <p class="card-text text-muted">Owner: @pet.Owner.GetFullName()</p>
+
+                        <div class="d-grid gap-2">
+
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <a asp-action="Edit" asp-route-id="@pet.PetId" asp-route-page="@ViewBag.CurrentPage" class="btn btn-primary">Edit</a>
+                                <a asp-action="Delete" asp-route-id="@pet.PetId" asp-route-page="@ViewBag.CurrentPage" class="btn btn-danger">Delete</a>
+
+                            }
+
+                            <a asp-action="Details" asp-route-id="@pet.PetId" asp-route-page="@ViewBag.CurrentPage" class="btn btn-success">Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Pagination Controls -->
+    <nav aria-label="Page navigation" class="mt-4">
+        <ul class="pagination justify-content-center">
+            @if (ViewBag.CurrentPage > 1)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("GetAllPets", new { page = ViewBag.CurrentPage - 1, pageSize = ViewBag.PageSize })">Previous</a>
+                </li>
+            }
+
+            @for (int i = 1; i <= ViewBag.TotalPages; i++)
+            {
+                <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("GetAllPets", new { page = i, pageSize = ViewBag.PageSize })">@i</a>
+                </li>
+            }
+
+            @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("GetAllPets", new { page = ViewBag.CurrentPage + 1, pageSize = ViewBag.PageSize })">Next</a>
+                </li>
+            }
+        </ul>
+    </nav>
+
+</div>

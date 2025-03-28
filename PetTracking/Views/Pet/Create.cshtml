@@ -1,0 +1,102 @@
+﻿@model PetTracking.DTOs.CreatePetDTO
+
+@{
+    ViewData["Title"] = "Create Pet";
+}
+
+<div class="container mt-5">
+    <h2>Create Pet</h2>
+
+    <form asp-action="Create" method="post" enctype="multipart/form-data">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Age"></label>
+            <input asp-for="Age" class="form-control" />
+            <span asp-validation-for="Age" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="OwnerId">Owner</label>
+            <select asp-for="OwnerId" class="form-control" asp-items="ViewBag.Owners">
+                <option value="">-- Select Owner --</option>
+            </select>
+            <span asp-validation-for="OwnerId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="PetImage">Pet Image</label>
+            <input asp-for="PetImage" class="form-control" accept="image/*" />
+            <span asp-validation-for="PetImage" class="text-danger"></span>
+        </div>
+
+        <!-- Yes/No Question -->
+        <div class="form-group">
+            <label>Does your pet have any vaccines?</label>
+            <div>
+                <input type="radio" id="vaccineYes" name="hasVaccines" value="Yes" /> Yes
+                <input type="radio" id="vaccineNo" name="hasVaccines" value="No" checked /> No
+            </div>
+        </div>
+
+        <!-- Vaccines Dropdown (Initially Hidden) -->
+        <div class="form-group" id="vaccinesGroup" style="display: none;">
+            <label for="VaccineIds">Vaccines</label>
+            <select asp-for="VaccineIds" class="form-control" asp-items="ViewBag.Vaccines" multiple="multiple">
+                <!-- No default selection is needed here -->
+            </select>
+            <small class="form-text text-muted">
+                Hold down the Ctrl (Windows) or Command (Mac) key to select multiple options.
+            </small>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create</button>
+        <a asp-action="GetAllPets" class="btn btn-secondary ml-2">Go Back To Pets</a>  
+
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        // JavaScript to show/hide the vaccines dropdown based on the user's selection
+        document.addEventListener("DOMContentLoaded", function () {
+            const vaccineYes = document.getElementById("vaccineYes");
+            const vaccineNo = document.getElementById("vaccineNo");
+            const vaccinesGroup = document.getElementById("vaccinesGroup");
+
+            //To show selected vaccines. ViewBag.HasVaccines = hasVaccines from PetController
+            // Initialize visibility based on ViewBag.HasVaccines
+            if ('@ViewBag.HasVaccines' === 'Yes') {
+                vaccinesGroup.style.display = "block";
+                vaccineYes.checked = true;
+            } else {
+                vaccinesGroup.style.display = "none";
+                vaccineNo.checked = true;
+            }
+
+            // Function to toggle visibility
+            function toggleVaccinesDropdown() {
+                if (vaccineYes.checked) {
+                    vaccinesGroup.style.display = "block";
+                } else {
+                    vaccinesGroup.style.display = "none";
+                }
+            }
+
+            // Add event listeners to the radio buttons
+            vaccineYes.addEventListener("change", toggleVaccinesDropdown);
+            vaccineNo.addEventListener("change", toggleVaccinesDropdown);
+        });
+    </script>
+}

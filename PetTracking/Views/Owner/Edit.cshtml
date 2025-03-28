@@ -1,0 +1,51 @@
+﻿@model PetTracking.DTOs.EditOwnerDTO
+
+@{
+    ViewData["Title"] = "Edit Owner";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg rounded">
+                <div class="card-header bg-primary text-white text-center">
+                    <h2>Edit Owner</h2>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Edit" method="post">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                        <input type="hidden" asp-for="OwnerId" />
+
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label fw-bold">First Name</label>
+                            <input asp-for="Name" class="form-control" placeholder="Enter owner's first name" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Surname" class="form-label fw-bold">Surname</label>
+                            <input asp-for="Surname" class="form-control" placeholder="Enter owner's surname" />
+                            <span asp-validation-for="Surname" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Age" class="form-label fw-bold">Age</label>
+                            <input asp-for="Age" type="number" class="form-control" placeholder="Enter owner's age" />
+                            <span asp-validation-for="Age" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <a asp-action="GetAllOwners" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left"></i> Back to Owners
+                            </a>
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-check-circle"></i> Save Changes
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

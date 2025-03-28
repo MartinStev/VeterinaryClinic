@@ -1,0 +1,65 @@
+﻿@model PetTracking.Models.Vaccine
+
+@{
+    ViewData["Title"] = "Vaccine Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center mb-4">🩺 Vaccine Details</h1>
+
+    <!-- Vaccine Information Card -->
+    <div class="card mb-4 shadow-lg rounded">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Vaccine Information</h4>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Vaccine Name: @Model.Name</h5>          
+            <p class="card-text">
+                <strong>Number of Pets Vaccinated with this vaccine:</strong> @(Model.PetVaccines?.Count() ?? 0)
+            </p>
+        </div>
+    </div>
+
+    <!-- Pets List -->
+    <h2 class="mb-3 text-center">🐾 Pets That Received This Vaccine</h2>
+
+    @if (Model.PetVaccines != null && Model.PetVaccines.Any())
+    {
+        <div class="table-responsive">
+            <table class="table table-striped table-hover text-center">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Pet Image</th>
+                        <th>Pet Name</th>
+                        <th>Age</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var petVaccine in Model.PetVaccines)
+                    {
+                        <tr>
+                            <td>
+                                <img src="~/images/@(petVaccine.Pet.PetId).jpg" class="img-thumbnail" alt="@petVaccine.Pet.Name" style="width: 100px; height: 100px; object-fit: cover; border-radius: 10px;">
+                            </td>
+                            <td>@petVaccine.Pet.Name</td>
+                            <td>@petVaccine.Pet.Age</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info text-center">
+            <i class="bi bi-info-circle"></i> No pets have received this vaccine yet.
+        </div>
+    }
+
+    <div class="mt-4 text-center">
+        <a asp-action="GetAllVaccines" class="btn btn-secondary btn-lg">
+            <i class="bi bi-arrow-left"></i> Back to Vaccines
+        </a>
+    </div>
+</div>

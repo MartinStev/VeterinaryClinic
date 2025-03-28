@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PetTracking</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/PetTracking.styles.css" asp-append-version="true" />
+   
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Owner" asp-action="GetAllOwners">PetTracking</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    @* Determine current controller and action *@
+                    @{
+                        var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+                        var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+                    }
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link @(currentController == "Owner" && currentAction == "GetAllOwners" ? "active" : "")"
+                                   asp-area="" asp-controller="Owner" asp-action="GetAllOwners">Owners</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @(currentController == "Vaccine" && currentAction == "GetAllVaccines" ? "active" : "")"
+                                   asp-area="" asp-controller="Vaccine" asp-action="GetAllVaccines">Vaccines</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @(currentController == "Pet" && currentAction == "GetAllPets" ? "active" : "")"
+                                   asp-area="" asp-controller="Pet" asp-action="GetAllPets">Pets</a>
+                            </li>
+     
+                        }
+
+                        @if(User.IsInRole("Admin") || User.IsInRole("User"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link @(currentController == "Owner" && currentAction == "Create" ? "active" : "")"
+                                   asp-area="" asp-controller="Owner" asp-action="Create">New Owner</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @(currentController == "Vaccine" && currentAction == "Create" ? "active" : "")"
+                                   asp-area="" asp-controller="Vaccine" asp-action="Create">New Vaccine</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @(currentController == "Pet" && currentAction == "Create" ? "active" : "")"
+                                   asp-area="" asp-controller="Pet" asp-action="Create">New Pet</a>
+                            </li>
+                        }
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container flex-grow-1">
+        <main role="main" class="py-3">
+            @RenderBody()
+        </main>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

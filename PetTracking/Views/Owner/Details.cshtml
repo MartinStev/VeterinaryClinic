@@ -1,0 +1,71 @@
+﻿@model Owner
+
+@{
+    ViewData["Title"] = "Owner Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">👤 Owner Details</h1>
+
+    <!-- Owner Information -->
+    <div class="card mb-4 shadow-lg rounded">
+        <div class="card-header bg-primary text-white text-center">
+            <h4 class="card-title mb-0">Owner Information</h4>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <p><i class="bi bi-person-circle"></i> <strong>Full Name:</strong> @Model.GetFullName()</p>
+                </div>
+                <div class="col-md-6">
+                    <p><i class="bi bi-calendar-check"></i> <strong>Age:</strong> @Model.Age</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pets Information -->
+    <div class="card shadow-lg rounded">
+        <div class="card-header bg-success text-white text-center">
+            <h4 class="card-title mb-0">🐶 Pets</h4>
+        </div>
+        <div class="card-body">
+            @if (Model.Pets != null && Model.Pets.Any())
+            {
+                <table class="table table-striped table-hover text-center table-sm">
+                    <thead class="table-dark">
+                        <tr>
+                            <th><i class="bi bi-paw"></i> Pet Name</th>
+                            <th><i class="bi bi-hourglass"></i> Age</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var pet in Model.Pets)
+                        {
+                            <tr>
+                                <td class="d-flex align-items-center justify-content-center">
+                                    <img src="~/images/@(pet.PetId).jpg" class="rounded-circle me-3"
+                                         alt="@pet.Name" style="width: 60px; height: 60px; object-fit: cover;">
+                                    <span class="fw-bold text-truncate" style="max-width: 150px;">@pet.Name</span>
+                                </td>
+                                <td>@pet.Age</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p class="text-muted text-center"><i class="bi bi-exclamation-circle"></i> No pets found for this owner.</p>
+            }
+        </div>
+    </div>
+
+    <!-- Back Button -->
+    <div class="mt-4 text-center">
+        <a asp-action="GetAllOwners" class="btn btn-secondary btn-lg">
+            <i class="bi bi-arrow-left"></i> Back to List
+        </a>
+    </div>
+</div>
