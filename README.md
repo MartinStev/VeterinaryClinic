@@ -39,3 +39,9 @@
 ![Image](https://github.com/user-attachments/assets/545c5548-0cbf-4345-bb73-45926be975a9)
 
 ![Image](https://github.com/user-attachments/assets/14cefb69-8acd-4aa2-9126-d5314815a3e3)
+
+<p>The Pets tab provides a centralized overview of all pets registered in the system, displaying essential details for each animal. Users can view key information such as the pet’s Name, Age, and Owner</p>
+<p>As an administrator, you have the ability to edit key pet details including name, age, and owner information. Additionally, you can add vaccines to a pet’s record, with the system automatically filtering to show only vaccines the pet has not yet received.</p>
+
+![Image](https://github.com/user-attachments/assets/a21309f3-0a9d-45fc-bcd5-623c55996a76)
+
