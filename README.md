@@ -50,7 +50,7 @@
 
 ![Image](https://github.com/user-attachments/assets/f6686eb5-e3a1-4552-9900-e44b00189a01)
 
-<p>In the Vaccines tab, administrators can view all vaccines stored in the system. Each vaccine entry includes three key actions: an Edit button to modify the vaccine’s name, a Delete button to remove a specific vaccine, and a Details button. Clicking Details reveals a list of all pets that have received the selected vaccine, enabling administrators to track vaccination history at the individual pet level. This streamlined interface ensures efficient management of vaccine records and their association with pets.</p>
+<p>In the <b>Vaccines</b> tab, administrators can view all vaccines stored in the system. Each vaccine entry includes three key actions: an <b>Edit</b> button to modify the vaccine’s name, a <b>Delete</b> button to remove a specific vaccine, and a <b>Details</b> button. Clicking Details reveals a list of all pets that have received the selected vaccine, enabling administrators to track vaccination history at the individual pet level. This streamlined interface ensures efficient management of vaccine records and their association with pets.</p>
 
 ![Image](https://github.com/user-attachments/assets/92610178-5716-4fa6-b6be-effb39636f8f)
 
