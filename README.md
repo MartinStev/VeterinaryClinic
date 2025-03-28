@@ -10,6 +10,26 @@
 
 ![Image](https://github.com/user-attachments/assets/ead13e15-a73d-440b-a041-05cf26c8e53b)
 
+<h2><b>User's View</b></h2>
+
+<p>When logged into the system, users accessing the Owners tab can view a comprehensive list of all active clients in the system. For each client, they have the option to click the Details button, which opens a dedicated page displaying detailed information about the client, including their personal profile and associated pets.</p>
+
+![Image](https://github.com/user-attachments/assets/69643f15-adad-45a3-b943-d41aca851180)
+
+![Image](https://github.com/user-attachments/assets/39dea090-fc67-442d-87fa-124c58e7e3ac)
+
+<p>Users can view all vaccines and the pets that received them by clicking the Details button.</p>
+
+![Image](https://github.com/user-attachments/assets/414e82f4-967e-4c51-8469-1cd784463e66)
+
+![Image](https://github.com/user-attachments/assets/b1a0e967-92ad-44a7-8f3a-3753dd110c9f)
+
+<p>Users can view all pets in the system, with each pet displaying a Details button that reveals additional information, including the pet’s owner and a list of vaccinations the pet has received.</p>
+
+![Image](https://github.com/user-attachments/assets/f56469ac-b655-4cd7-868a-6a4a8f4f7c43)
+
+![Image](https://github.com/user-attachments/assets/91bfd94f-3d39-4919-bbe8-8d53fdce72d3)\
+
 <h2><b>Admin's View</b></h2>
 
 <p>When an admin logs into the system, they are transferred to the Owners tab, which serves as a central hub for managing client information. </p> 
