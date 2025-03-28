@@ -58,3 +58,25 @@
 
 ![Image](https://github.com/user-attachments/assets/f8061ce6-6e27-4a11-b142-e18ccd018cb9)
 
+<p>Administrators possess the capability to create new client profiles, requiring mandatory entry of valid:</p>
+<ul>
+  <li>Name.</li>
+  <li>Surname.</li>
+  <li>Age.</li>
+</ul>
+
+![Image](https://github.com/user-attachments/assets/15056241-a055-4099-a3d4-096a8e0be107)
+
+<p>Administrators can create new vaccines by entering a unique name for the vaccine.</p>
+
+![Image](https://github.com/user-attachments/assets/c93a6436-33c8-45e5-b459-220711b7bc36)
+
+<p>Administrators can create new pets by providing the following details:</p>
+<ul>
+  <li>Name.</li>
+  <li>Age in range between 1 and 50.</li>
+  <li>Choose the pet’s owner from a dropdown list of existing owners in the system.</li>
+  <li>Select applicable vaccines from a dropdown list</li>
+</ul>
+
+![Image](https://github.com/user-attachments/assets/86328aea-60ab-4b43-8d18-45f747d5cae1)
