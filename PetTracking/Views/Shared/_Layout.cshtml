@@ -4,16 +4,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - PetTracking</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/PetTracking.styles.css" asp-append-version="true" />
-   
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="/PetTracking.styles.css" asp-append-version="true" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 <body class="d-flex flex-column min-vh-100">
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Owner" asp-action="GetAllOwners">PetTracking</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="" alt="PetTracking Logo" style="height:75px; width: 150px;">
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -39,22 +41,20 @@
                                 <a class="nav-link @(currentController == "Pet" && currentAction == "GetAllPets" ? "active" : "")"
                                    asp-area="" asp-controller="Pet" asp-action="GetAllPets">Pets</a>
                             </li>
-     
+
                         }
 
-                        @if(User.IsInRole("Admin") || User.IsInRole("User"))
+                        @if (User.IsInRole("Admin") || User.IsInRole("User"))
                         {
-                            <li class="nav-item">
-                                <a class="nav-link @(currentController == "Owner" && currentAction == "Create" ? "active" : "")"
-                                   asp-area="" asp-controller="Owner" asp-action="Create">New Owner</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link @(currentController == "Vaccine" && currentAction == "Create" ? "active" : "")"
-                                   asp-area="" asp-controller="Vaccine" asp-action="Create">New Vaccine</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link @(currentController == "Pet" && currentAction == "Create" ? "active" : "")"
-                                   asp-area="" asp-controller="Pet" asp-action="Create">New Pet</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="createDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Create
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="createDropdown">
+                                    <li><a class="dropdown-item @(currentController == "Owner" && currentAction == "Create" ? "active" : "")" asp-controller="Owner" asp-action="Create">Owner</a></li>
+                                    <li><a class="dropdown-item @(currentController == "Vaccine" && currentAction == "Create" ? "active" : "")" asp-controller="Vaccine" asp-action="Create">Vaccine</a></li>
+                                    <li><a class="dropdown-item @(currentController == "Pet" && currentAction == "Create" ? "active" : "")" asp-controller="Pet" asp-action="Create">Pet</a></li>
+                                </ul>
                             </li>
                         }
                     </ul>
@@ -68,9 +68,55 @@
             @RenderBody()
         </main>
     </div>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+<footer class="bg-dark text-white mt-auto py-4">
+    <div class="container">
+        <div class="row">
+            <!-- Quick Links -->
+            <div class="col-md-3">
+                <h5>Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white text-decoration-none">About Us</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Contact</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Location</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Press Center</a></li>
+                </ul>
+            </div>
+
+            <!-- Copyright Section -->
+            <div class="col-md-4 text-center">
+                <p>&copy; 2025 PetTracking. All rights reserved.</p>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="col-md-3">
+                <h5>Newsletter</h5>
+                <form method="post" action="/subscribe">
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Enter your email" required>
+                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Social Media Links -->
+            <div class="col-md-2 text-center">
+                <h5>Follow Us</h5>
+                <a href="https://www.facebook.com" class="text-white me-3" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.youtube.com" class="text-white me-3" target="_blank" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://www.instagram.com" class="text-white" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
 </html>
